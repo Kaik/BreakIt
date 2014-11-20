@@ -1,6 +1,7 @@
-<h1><i class="fa fa-bomb"></i> Break It!</h1>
-<div class="container text-center">
-    <div class="well well-lg" style="width: 400px;">
+<div class="container-fluid">
+    <h1><i class="fa fa-bomb"></i> Break It!</h1>
+    {insert name="getstatusmsg"}
+    <div class="well well-lg text-center" style="width: 400px;">
         <div class="alert alert-info text-left">
             <ul>
                 <li>Environment: {$serviceManager.env}</li>
