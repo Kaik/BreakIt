@@ -1,0 +1,3 @@
+zikulabreakitmodule:
+    resource: "@ZikulaBreakItModule/Controller"
+    type:     annotation

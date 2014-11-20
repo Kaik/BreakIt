@@ -1,0 +1,26 @@
+{
+    "name": "zikula/breakit",
+    "description": "A module to intentionally break stuff.",
+    "type": "zikula-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "craigh",
+            "role": "owner",
+            "homepage": "https://github.com/craigh"
+        }
+    ],
+    "require": {
+        "php": ">5.3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zikula\\BreakItModule\\": ""
+        }
+    },
+    "extra": {
+        "zikula": {
+            "class": "Zikula\\BreakItModule\\ZikulaBreakItModule"
+        }
+    }
+}
