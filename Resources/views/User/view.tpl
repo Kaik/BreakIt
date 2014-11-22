@@ -10,6 +10,7 @@
         </div>
         <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='AccessDeniedException'}" role="button">Throw AccessDeniedException</a>
         <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='NotFoundHttpException'}" role="button">Throw NotFoundHttpException</a>
+        <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='RouteNotFoundException'}" role="button">Throw RouteNotFoundException</a>
         <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='InvalidArgumentException'}" role="button">Throw InvalidArgumentException</a>
         <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='FatalErrorException'}" role="button">Throw FatalErrorException</a>
         <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='RuntimeException'}" role="button">Throw RuntimeException</a>

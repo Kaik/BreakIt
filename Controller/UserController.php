@@ -24,6 +24,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method; // used in annotati
 use Symfony\Component\HttpFoundation\Request;
 use Zikula\Core\Exception\FatalErrorException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
 
 class UserController extends \Zikula_AbstractController
 {
@@ -44,6 +45,9 @@ class UserController extends \Zikula_AbstractController
                 break;
             case "NotFoundHttpException":
                 throw new NotFoundHttpException();
+                break;
+            case "RouteNotFoundException":
+                $this->get('router')->generate('acmefoobarmodule_user_index');
                 break;
             case "InvalidArgumentException":
                 throw new \InvalidArgumentException();
