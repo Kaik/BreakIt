@@ -14,5 +14,7 @@
         <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='FatalErrorException'}" role="button">Throw FatalErrorException</a>
         <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='RuntimeException'}" role="button">Throw RuntimeException</a>
         <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='Exception'}" role="button">Throw Exception</a>
+        <a class="btn btn-primary btn-lg btn-block" href="/I/AM/INVALID" role="button">Open invalid route</a>
+        <a class="btn btn-primary btn-lg btn-block" href="/index.php?module=invalid&type=user&func=main" role="button">Open invalid url (old-style)</a>
     </div>
 </div>
