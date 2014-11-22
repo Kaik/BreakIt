@@ -5,7 +5,7 @@
         <div class="alert alert-info text-left">
             <ul>
                 <li>Environment: {$serviceManager.env}</li>
-                <li>Debug: {$serviceManager.debug}</li>
+                <li>Debug: {$serviceManager.debug|yesno}</li>
             </ul>
         </div>
         <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='AccessDeniedException'}" role="button">Throw AccessDeniedException</a>
