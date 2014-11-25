@@ -1,40 +1,33 @@
 <?php
-/**
- * Copyright Zikula Foundation 2014 - Zikula Application Framework
- *
- * This work is contributed to the Zikula Foundation under one or more
- * Contributor Agreements and licensed to You under the following license:
- *
- * @license MIT
- * @package Demo
- *
- * Please see the NOTICE file distributed with this source code for further
- * information regarding copyright and licensing.
- */
-
-/**
- * UI operations executable by general users.
- */
 
 namespace Zikula\BreakItModule\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Zikula\Core\Controller\AbstractController;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route; // used in annotations - do not remove
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method; // used in annotations - do not remove
-use Symfony\Component\HttpFoundation\Request;
 use Zikula\Core\Exception\FatalErrorException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class UserController extends \Zikula_AbstractController
+/**
+ * @Route("/new")
+ *
+ * Class NewController
+ * @package Zikula\BreakItModule\Controller
+ */
+class NewController extends AbstractController
 {
     /**
      * @Route("/{break}")
      *
-     * The default entry point.
+     * @param Request $request
+     * @param string $break
      *
-     * @throws \Exception of various types at will
+     * @return Response
      *
-     * @return string
+     * @throws \Exception of various types
      */
     public function indexAction(Request $request, $break = null)
     {
@@ -46,7 +39,6 @@ class UserController extends \Zikula_AbstractController
                 throw new NotFoundHttpException();
                 break;
             case "RouteNotFoundException":
-                // the route doesn't exist, so it will throw \Symfony\Component\Routing\Exception\RouteNotFoundException
                 $this->get('router')->generate('acmefoobarmodule_user_index');
                 break;
             case "InvalidArgumentException":
@@ -62,8 +54,8 @@ class UserController extends \Zikula_AbstractController
                 throw new \Exception();
                 break;
             default:
-                return $this->response($this->view->fetch('User/view.tpl'));
+                $request->attributes->set('_legacy', true); // forces template to render inside old theme
+                return $this->render('ZikulaBreakItModule:New:index.html.twig');
         }
     }
-
 }
