@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <h1><i class="fa fa-bomb"></i> Break It!</h1>
+    <h1><i class="fa fa-bomb"></i> Break It! (unrouted!)</h1>
     {insert name="getstatusmsg"}
     <div class="well well-lg text-center pull-left" style="width: 400px;">
         <div class="alert alert-info text-left">
@@ -10,13 +10,13 @@
                 <li>Zikula stripentrypoint: {$modvars.ZConfig.shorturlsstripentrypoint|yesno}</li>
             </ul>
         </div>
-        <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='AccessDeniedException'}" role="button">Throw AccessDeniedException</a>
-        <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='NotFoundHttpException'}" role="button">Throw NotFoundHttpException</a>
-        <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='RouteNotFoundException'}" role="button">Throw RouteNotFoundException</a>
-        <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='InvalidArgumentException'}" role="button">Throw InvalidArgumentException</a>
-        <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='FatalErrorException'}" role="button">Throw FatalErrorException</a>
-        <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='RuntimeException'}" role="button">Throw RuntimeException</a>
-        <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='Exception'}" role="button">Throw Exception</a>
+        <a class="btn btn-primary btn-lg btn-block" href="{modurl modname='BreakIt' type='user' func='break' break='AccessDeniedException'}" role="button">Throw AccessDeniedException</a>
+        <a class="btn btn-primary btn-lg btn-block" href="{modurl modname='BreakIt' type='user' func='break' break='NotFoundHttpException'}" role="button">Throw NotFoundHttpException</a>
+        <a class="btn btn-primary btn-lg btn-block" href="{modurl modname='BreakIt' type='user' func='break' break='RouteNotFoundException'}" role="button">Throw RouteNotFoundException</a>
+        <a class="btn btn-primary btn-lg btn-block" href="{modurl modname='BreakIt' type='user' func='break' break='InvalidArgumentException'}" role="button">Throw InvalidArgumentException</a>
+        <a class="btn btn-primary btn-lg btn-block" href="{modurl modname='BreakIt' type='user' func='break' break='FatalErrorException'}" role="button">Throw FatalErrorException</a>
+        <a class="btn btn-primary btn-lg btn-block" href="{modurl modname='BreakIt' type='user' func='break' break='RuntimeException'}" role="button">Throw RuntimeException</a>
+        <a class="btn btn-primary btn-lg btn-block" href="{modurl modname='BreakIt' type='user' func='break' break='Exception'}" role="button">Throw Exception</a>
         <a class="btn btn-primary btn-lg btn-block" href="{$baseurl}I/AM/INVALID" role="button">Open invalid route</a>
         <a class="btn btn-primary btn-lg btn-block" href="{$baseurl}index.php?module=invalid&type=user&func=main" role="button">Open invalid url (old-style)</a>
     </div>

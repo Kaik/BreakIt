@@ -1,0 +1,5 @@
+services:
+    breakit.twig.breakit_extension:
+        class: Zikula\BreakItModule\Twig\BreakItExtension
+        tags:
+            - { name: twig.extension }

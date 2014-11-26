@@ -6,14 +6,10 @@
  * Contributor Agreements and licensed to You under the following license:
  *
  * @license MIT
- * @package Demo
+ * @package BreakIt
  *
  * Please see the NOTICE file distributed with this source code for further
  * information regarding copyright and licensing.
- */
-
-/**
- * UI operations executable by general users.
  */
 
 namespace Zikula\BreakItModule\Controller;
@@ -24,11 +20,18 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method; // used in annotati
 use Symfony\Component\HttpFoundation\Request;
 use Zikula\Core\Exception\FatalErrorException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Zikula\BreakItModule\Util as BreakItUtil;
 
+/**
+ * UI operations executable by general users.
+ *
+ * Class UserController
+ * @package Zikula\BreakItModule\Controller
+ */
 class UserController extends \Zikula_AbstractController
 {
     /**
-     * @Route("/{break}")
+     * @Route("/old/{break}")
      *
      * The default entry point.
      *
@@ -38,32 +41,23 @@ class UserController extends \Zikula_AbstractController
      */
     public function indexAction(Request $request, $break = null)
     {
-        switch ($break) {
-            case "AccessDeniedException":
-                throw new AccessDeniedException();
-                break;
-            case "NotFoundHttpException":
-                throw new NotFoundHttpException();
-                break;
-            case "RouteNotFoundException":
-                // the route doesn't exist, so it will throw \Symfony\Component\Routing\Exception\RouteNotFoundException
-                $this->get('router')->generate('acmefoobarmodule_user_index');
-                break;
-            case "InvalidArgumentException":
-                throw new \InvalidArgumentException();
-                break;
-            case "FatalErrorException":
-                throw new FatalErrorException();
-                break;
-            case "RuntimeException":
-                throw new \RuntimeException();
-                break;
-            case "Exception":
-                throw new \Exception();
-                break;
-            default:
-                return $this->response($this->view->fetch('User/view.tpl'));
-        }
+        BreakItUtil::throwExceptions($this->get('router'), $break);
+
+        return $this->response($this->view->fetch('User/view.tpl'));
     }
 
+    /**
+     * intentionally non-routed method
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws FatalErrorException
+     * @throws \Exception
+     */
+    public function breakAction()
+    {
+        $break = $this->request->query->get('break', null);
+        BreakItUtil::throwExceptions($this->get('router'), $break);
+
+        return $this->response($this->view->fetch('User/break.tpl'));
+    }
 }

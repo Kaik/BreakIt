@@ -6,18 +6,18 @@
  * Contributor Agreements and licensed to You under the following license:
  *
  * @license MIT
- * @package Demo
+ * @package BreakIt
  *
  * Please see the NOTICE file distributed with this source code for further
  * information regarding copyright and licensing.
  */
 
-/**
- * module installer.
- */
-
 namespace Zikula\BreakItModule;
 
+/**
+ * Class BreakItModuleInstaller
+ * @package Zikula\BreakItModule
+ */
 class BreakItModuleInstaller extends \Zikula_AbstractInstaller
 {
 

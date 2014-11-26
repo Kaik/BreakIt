@@ -8,7 +8,9 @@
         <div class="alert alert-info text-left">
             <ul>
                 <li>Environment: {{ app.environment }}</li>
-                <li>Debug: {{ app.debug }}</li>
+                <li>Debug: {{ app.debug|yesno }}</li>
+                <li>Zikula shorturls: {{ ZConfig.shorturls|yesno }}</li>
+                <li>Zikula stripentrypoint: {{ ZConfig.shorturlsstripentrypoint|yesno }}</li>
             </ul>
         </div>
         <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'AccessDeniedException'}) }}" role="button">Throw AccessDeniedException</a>
@@ -23,6 +25,7 @@
     </div>
     <div class="well well-sm text-center pull-left" style="width: 200px; margin-left: 20px;">
         <a class="btn btn-default btn-sm btn-block" href="{{ path('zikulabreakitmodule_user_index') }}" role="button">Old controller</a>
+        <a class="btn btn-default btn-sm btn-block" href="{{ app.request.baseUrl }}/index.php?module=breakit&type=user&func=break" role="button">Old controller (unrouted)</a>
         <a class="btn btn-default btn-sm btn-block" href="{{ path('zikulabreakitmodule_new_index') }}" role="button">New controller</a>
     </div>
 </div>
