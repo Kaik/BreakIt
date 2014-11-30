@@ -46,6 +46,6 @@ class NewController extends AbstractController
         BreakItUtil::throwExceptions($this->get('router'), $break);
 
         $request->attributes->set('_legacy', true); // forces template to render inside old theme
-        return $this->render('ZikulaBreakItModule:New:index.html.twig');
+        return $this->render('ZikulaBreakItModule:New:index.html.twig', array('ZUserLoggedIn' => \UserUtil::isLoggedIn()));
     }
 }

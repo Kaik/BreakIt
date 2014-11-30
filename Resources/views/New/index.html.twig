@@ -13,6 +13,7 @@
                         <li>Debug: {{ app.debug|yesno }}</li>
                         <li>Zikula shorturls: {{ ZConfig.shorturls|yesno }}</li>
                         <li>Zikula stripentrypoint: {{ ZConfig.shorturlsstripentrypoint|yesno }}</li>
+                        <li>Zikula User logged In: {{ ZUserLoggedIn|yesno }}</li>
                     </ul>
                 </div>
                 <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'AccessDeniedException'}) }}" role="button">Throw AccessDeniedException</a>

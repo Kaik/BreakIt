@@ -10,6 +10,7 @@
                         <li>Debug: {$serviceManager.debug|yesno}</li>
                         <li>Zikula shorturls: {$modvars.ZConfig.shorturls|yesno}</li>
                         <li>Zikula stripentrypoint: {$modvars.ZConfig.shorturlsstripentrypoint|yesno}</li>
+                        <li>Zikula User logged In: {userloggedin|yesno}</li>
                     </ul>
                 </div>
                 <a class="btn btn-primary btn-lg btn-block" href="{modurl modname='BreakIt' type='user' func='break' break='AccessDeniedException'}" role="button">Throw AccessDeniedException</a>
