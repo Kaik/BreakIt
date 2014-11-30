@@ -1,31 +1,37 @@
 <div class="container-fluid">
-    <h1><i class="fa fa-bomb"></i> {{  p.__('Break It! (New Controller)') }}</h1>
-    {# display flash messages (only errors) #}
-    {% for message in attribute(app.session.flashBag, 'get', ['error']) %}
-        <div class="alert alert-danger">{{ message }}</div>
-    {% endfor %}
-    <div class="well well-lg text-center pull-left" style="width: 400px;">
-        <div class="alert alert-info text-left">
-            <ul>
-                <li>Environment: {{ app.environment }}</li>
-                <li>Debug: {{ app.debug|yesno }}</li>
-                <li>Zikula shorturls: {{ ZConfig.shorturls|yesno }}</li>
-                <li>Zikula stripentrypoint: {{ ZConfig.shorturlsstripentrypoint|yesno }}</li>
-            </ul>
+    <div class="row">
+        <h1><i class="fa fa-bomb"></i> {{  p.__('Break It! (New Controller)') }}</h1>
+        {# display flash messages (only errors) #}
+        {% for message in attribute(app.session.flashBag, 'get', ['error']) %}
+            <div class="alert alert-danger">{{ message }}</div>
+        {% endfor %}
+        <div class="col-xs-12 col-md-6">
+            <div class="well well-lg text-center">
+                <div class="alert alert-info text-left">
+                    <ul>
+                        <li>Environment: {{ app.environment }}</li>
+                        <li>Debug: {{ app.debug|yesno }}</li>
+                        <li>Zikula shorturls: {{ ZConfig.shorturls|yesno }}</li>
+                        <li>Zikula stripentrypoint: {{ ZConfig.shorturlsstripentrypoint|yesno }}</li>
+                    </ul>
+                </div>
+                <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'AccessDeniedException'}) }}" role="button">Throw AccessDeniedException</a>
+                <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'NotFoundHttpException'}) }}" role="button">Throw NotFoundHttpException</a>
+                <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'RouteNotFoundException'}) }}" role="button">Throw RouteNotFoundException</a>
+                <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'InvalidArgumentException'}) }}" role="button">Throw InvalidArgumentException</a>
+                <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'FatalErrorException'}) }}" role="button">Throw FatalErrorException</a>
+                <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'RuntimeException'}) }}" role="button">Throw RuntimeException</a>
+                <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'Exception'}) }}" role="button">Throw Exception</a>
+                <a class="btn btn-primary btn-lg btn-block" href="{{ app.request.baseUrl }}/I/AM/INVALID" role="button">Open invalid route</a>
+                <a class="btn btn-primary btn-lg btn-block" href="{{ app.request.baseUrl }}/index.php?module=invalid&type=user&func=main" role="button">Open invalid url (old-style)</a>
+            </div>
         </div>
-        <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'AccessDeniedException'}) }}" role="button">Throw AccessDeniedException</a>
-        <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'NotFoundHttpException'}) }}" role="button">Throw NotFoundHttpException</a>
-        <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'RouteNotFoundException'}) }}" role="button">Throw RouteNotFoundException</a>
-        <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'InvalidArgumentException'}) }}" role="button">Throw InvalidArgumentException</a>
-        <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'FatalErrorException'}) }}" role="button">Throw FatalErrorException</a>
-        <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'RuntimeException'}) }}" role="button">Throw RuntimeException</a>
-        <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'Exception'}) }}" role="button">Throw Exception</a>
-        <a class="btn btn-primary btn-lg btn-block" href="{{ app.request.baseUrl }}/I/AM/INVALID" role="button">Open invalid route</a>
-        <a class="btn btn-primary btn-lg btn-block" href="{{ app.request.baseUrl }}/index.php?module=invalid&type=user&func=main" role="button">Open invalid url (old-style)</a>
-    </div>
-    <div class="well well-sm text-center pull-left" style="width: 200px; margin-left: 20px;">
-        <a class="btn btn-default btn-sm btn-block" href="{{ path('zikulabreakitmodule_user_index') }}" role="button">Old controller</a>
-        <a class="btn btn-default btn-sm btn-block" href="{{ app.request.baseUrl }}/index.php?module=breakit&type=user&func=break" role="button">Old controller (unrouted)</a>
-        <a class="btn btn-default btn-sm btn-block" href="{{ path('zikulabreakitmodule_new_index') }}" role="button">New controller</a>
+        <div class="col-xs-12 col-md-3">
+            <div class="well well-sm text-center">
+                <a class="btn btn-default btn-sm btn-block" href="{{ path('zikulabreakitmodule_user_index') }}" role="button">Old controller</a>
+                <a class="btn btn-default btn-sm btn-block" href="{{ app.request.baseUrl }}/index.php?module=breakit&type=user&func=break" role="button">Old controller (unrouted)</a>
+                <a class="btn btn-default btn-sm btn-block" href="{{ path('zikulabreakitmodule_new_index') }}" role="button">New controller</a>
+            </div>
+        </div>
     </div>
 </div>
