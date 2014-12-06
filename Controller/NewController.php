@@ -48,4 +48,22 @@ class NewController extends AbstractController
         $request->attributes->set('_legacy', true); // forces template to render inside old theme
         return $this->render('ZikulaBreakItModule:New:index.html.twig', array('ZUserLoggedIn' => \UserUtil::isLoggedIn()));
     }
+
+    /**
+     * @Route("/ajax/break", options={"expose"=true})
+     *
+     * @param Request $request
+     *
+     * @return Response
+     *
+     * @throws \Exception of various types
+     */
+    public function breakAction(Request $request)
+    {
+        $break = $request->request->get('break', null);
+        BreakItUtil::throwExceptions($this->get('router'), $break);
+
+        $request->attributes->set('_legacy', true); // forces template to render inside old theme
+        return $this->render('ZikulaBreakItModule:New:index.html.twig', array('ZUserLoggedIn' => \UserUtil::isLoggedIn()));
+    }
 }
