@@ -1,0 +1,24 @@
+<fieldset>
+    <legend>Ajax</legend>
+    <label for="breakit-ajax-controller" class="pull-left">Request from:</label>
+    <select id="breakit-ajax-controller" class="form-control">
+        <option value="new">New controller</option>
+        <option value="old-routed" selected>Old controller with routing</option>
+        <option value="old-unrouted">Old controller unrouted</option>
+        <option value="old-ajax">Old controller unrouted using ajax.php</option>
+    </select>
+    <div class="btn-group btn-block">
+        <button id='ajax-button' type="button" class="btn btn-warning btn-lg dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            &nbsp;&nbsp;Throw Ajax...&nbsp;&nbsp;&nbsp;<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a class="breakSelect" href="#" data-break='AccessDeniedException'>AccessDeniedException</a></li>
+            <li><a class="breakSelect" href="#" data-break='NotFoundHttpException'>NotFoundHttpException</a></li>
+            <li><a class="breakSelect" href="#" data-break='RouteNotFoundException'>RouteNotFoundException</a></li>
+            <li><a class="breakSelect" href="#" data-break='InvalidArgumentException'>InvalidArgumentException</a></li>
+            <li><a class="breakSelect" href="#" data-break='FatalErrorException'>FatalErrorException</a></li>
+            <li><a class="breakSelect" href="#" data-break='RuntimeException'>RuntimeException</a></li>
+            <li><a class="breakSelect" href="#" data-break='Exception'>Exception</a></li>
+        </ul>
+    </div>
+</fieldset>

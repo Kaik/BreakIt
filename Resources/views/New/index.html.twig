@@ -16,15 +16,23 @@
                         <li>Zikula User logged In: {{ ZUserLoggedIn|yesno }}</li>
                     </ul>
                 </div>
-                <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'AccessDeniedException'}) }}" role="button">Throw AccessDeniedException</a>
-                <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'NotFoundHttpException'}) }}" role="button">Throw NotFoundHttpException</a>
-                <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'RouteNotFoundException'}) }}" role="button">Throw RouteNotFoundException</a>
-                <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'InvalidArgumentException'}) }}" role="button">Throw InvalidArgumentException</a>
-                <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'FatalErrorException'}) }}" role="button">Throw FatalErrorException</a>
-                <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'RuntimeException'}) }}" role="button">Throw RuntimeException</a>
-                <a class="btn btn-primary btn-lg btn-block" href="{{ path('zikulabreakitmodule_new_index', {'break': 'Exception'}) }}" role="button">Throw Exception</a>
                 <a class="btn btn-primary btn-lg btn-block" href="{{ app.request.baseUrl }}/I/AM/INVALID" role="button">Open invalid route</a>
                 <a class="btn btn-primary btn-lg btn-block" href="{{ app.request.baseUrl }}/index.php?module=invalid&type=user&func=main" role="button">Open invalid url (old-style)</a>
+                <div class="btn-group btn-block" style="padding-bottom:1em;">
+                    <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        &nbsp;&nbsp;Throw Standard...&nbsp;&nbsp;&nbsp;<span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{{ path('zikulabreakitmodule_new_index', {'break': 'AccessDeniedException'}) }}">AccessDeniedException</a></li>
+                        <li><a href="{{ path('zikulabreakitmodule_new_index', {'break': 'NotFoundHttpException'}) }}">NotFoundHttpException</a></li>
+                        <li><a href="{{ path('zikulabreakitmodule_new_index', {'break': 'RouteNotFoundException'}) }}">RouteNotFoundException</a></li>
+                        <li><a href="{{ path('zikulabreakitmodule_new_index', {'break': 'InvalidArgumentException'}) }}">InvalidArgumentException</a></li>
+                        <li><a href="{{ path('zikulabreakitmodule_new_index', {'break': 'FatalErrorException'}) }}">FatalErrorException</a></li>
+                        <li><a href="{{ path('zikulabreakitmodule_new_index', {'break': 'RuntimeException'}) }}">RuntimeException</a></li>
+                        <li><a href="{{ path('zikulabreakitmodule_new_index', {'break': 'Exception'}) }}">Exception</a></li>
+                    </ul>
+                </div>
+                {% include 'ZikulaBreakItModule::ajaxform.html.twig' %}
             </div>
         </div>
         <div class="col-xs-12 col-md-3">
@@ -36,3 +44,27 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="breakItModal" tabindex="-1" role="dialog" aria-labelledby="breakItModalLabel" aria-hidden="true">
+    <div class="modal-dialog {% if app.environment == 'dev' %}modal-lg{% endif %}">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="breakItModalLabel">Ajax Result</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{# jquery autoincluded see \JCSSUtil::prepareJavascripts #}
+{# this 'manual' solution requires that the assets be reinstalled anytime a change is made. #}
+<script src="{{ asset('modules/zikulabreakit/js/Zikula.BreakIt.User.View.js') }}"></script>
+{#{% javascripts '@ZikulaBreakItModule/Resources/public/js/*' %}#}
+{# this only works if bundle is registered with assetic, which it is not yet. @todo how to do this? #}
+{#<script type="text/javascript" src="{{ asset_url }}"></script>#}
+{#{% endjavascripts %}#}

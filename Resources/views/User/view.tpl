@@ -13,15 +13,23 @@
                         <li>Zikula User logged In: {userloggedin|yesno}</li>
                     </ul>
                 </div>
-                <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='AccessDeniedException'}" role="button">Throw AccessDeniedException</a>
-                <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='NotFoundHttpException'}" role="button">Throw NotFoundHttpException</a>
-                <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='RouteNotFoundException'}" role="button">Throw RouteNotFoundException</a>
-                <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='InvalidArgumentException'}" role="button">Throw InvalidArgumentException</a>
-                <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='FatalErrorException'}" role="button">Throw FatalErrorException</a>
-                <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='RuntimeException'}" role="button">Throw RuntimeException</a>
-                <a class="btn btn-primary btn-lg btn-block" href="{route name='zikulabreakitmodule_user_index' break='Exception'}" role="button">Throw Exception</a>
                 <a class="btn btn-primary btn-lg btn-block" href="{$baseurl}I/AM/INVALID" role="button">Open invalid route</a>
                 <a class="btn btn-primary btn-lg btn-block" href="{$baseurl}index.php?module=invalid&type=user&func=main" role="button">Open invalid url (old-style)</a>
+                <div class="btn-group btn-block" style="padding-bottom:1em;">
+                    <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        &nbsp;&nbsp;Throw Standard...&nbsp;&nbsp;&nbsp;<span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{route name='zikulabreakitmodule_user_index' break='AccessDeniedException'}">AccessDeniedException</a></li>
+                        <li><a href="{route name='zikulabreakitmodule_user_index' break='NotFoundHttpException'}">NotFoundHttpException</a></li>
+                        <li><a href="{route name='zikulabreakitmodule_user_index' break='RouteNotFoundException'}">RouteNotFoundException</a></li>
+                        <li><a href="{route name='zikulabreakitmodule_user_index' break='InvalidArgumentException'}">InvalidArgumentException</a></li>
+                        <li><a href="{route name='zikulabreakitmodule_user_index' break='FatalErrorException'}">FatalErrorException</a></li>
+                        <li><a href="{route name='zikulabreakitmodule_user_index' break='RuntimeException'}">RuntimeException</a></li>
+                        <li><a href="{route name='zikulabreakitmodule_user_index' break='Exception'}">Exception</a></li>
+                    </ul>
+                </div>
+                {include file="ajaxform.html.twig"}
             </div>
         </div>
         <div class="col-xs-12 col-md-3">
@@ -33,3 +41,4 @@
         </div>
     </div>
 </div>
+{include file="User/modal.tpl"}
