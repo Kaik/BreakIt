@@ -31,26 +31,26 @@ class Util {
     {
         switch ($exception) {
             case "AccessDeniedException":
-                throw new AccessDeniedException();
+                throw new AccessDeniedException('This is a sample BreakIt error message for AccessDeniedException.');
                 break;
             case "NotFoundHttpException":
-                throw new NotFoundHttpException();
+                throw new NotFoundHttpException('This is a sample BreakIt error message for NotFoundHttpException.');
                 break;
             case "RouteNotFoundException":
                 // this unknown route will throw a \Symfony\Component\Routing\Exception\RouteNotFoundException
                 $router->generate('acmefoobarmodule_user_index');
                 break;
             case "InvalidArgumentException":
-                throw new \InvalidArgumentException();
+                throw new \InvalidArgumentException('This is a sample BreakIt error message for InvalidArgumentException.');
                 break;
             case "FatalErrorException":
-                throw new FatalErrorException();
+                throw new FatalErrorException('This is a sample BreakIt error message for FatalErrorException.');
                 break;
             case "RuntimeException":
-                throw new \RuntimeException();
+                throw new \RuntimeException('This is a sample BreakIt error message for RuntimeException.');
                 break;
             case "Exception":
-                throw new \Exception();
+                throw new \Exception('This is a sample BreakIt error message for Exception.');
                 break;
             default:
                 // do nothing
