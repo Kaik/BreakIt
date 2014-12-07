@@ -35,5 +35,10 @@ class ZikulaBreakItExtension extends Extension
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
 
         $loader->load('services.yml');
+
+        // add BreakIt to Assetic config - this is required to automatically load JS/CSS files
+        $asseticConfig = $container->getParameter('assetic.bundles');
+        $asseticConfig[] = 'ZikulaBreakItModule';
+        $container->setParameter('assetic.bundles', $asseticConfig);
     }
 }

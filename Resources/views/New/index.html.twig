@@ -62,9 +62,6 @@
     </div>
 </div>
 {# jquery autoincluded see \JCSSUtil::prepareJavascripts #}
-{# this 'manual' solution requires that the assets be reinstalled anytime a change is made. #}
-<script src="{{ asset('modules/zikulabreakit/js/Zikula.BreakIt.User.View.js') }}"></script>
-{#{% javascripts '@ZikulaBreakItModule/Resources/public/js/*' %}#}
-{# this only works if bundle is registered with assetic, which it is not yet. @todo how to do this? #}
-{#<script type="text/javascript" src="{{ asset_url }}"></script>#}
-{#{% endjavascripts %}#}
+{% javascripts '@ZikulaBreakItModule/Resources/public/js/*' %}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
