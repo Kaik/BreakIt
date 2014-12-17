@@ -37,6 +37,7 @@
                 <a class="btn btn-default btn-sm btn-block" href="{route name='zikulabreakitmodule_user_index'}" role="button">Old controller</a>
                 <a class="btn btn-default btn-sm btn-block" href="{modurl modname='BreakIt' type='user' func='break'}" role="button">Old controller (unrouted)</a>
                 <a class="btn btn-default btn-sm btn-block" href="{route name='zikulabreakitmodule_new_index'}" role="button">New controller</a>
+                <a class="btn btn-info btn-sm btn-block" href="{route name='zikulabreakitmodule_form_test'}" role="button">Form Demo</a>
             </div>
         </div>
     </div>
