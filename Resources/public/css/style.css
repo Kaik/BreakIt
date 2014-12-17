@@ -1,1 +1,5 @@
-/* nothing */
+.breakit-test {
+    font-weight: bold;
+    font-style: italic;
+    text-transform: uppercase;
+}

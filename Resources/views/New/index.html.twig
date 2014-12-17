@@ -1,3 +1,6 @@
+{% stylesheets '@ZikulaBreakItModule/Resources/public/css/*' filter='cssrewrite' %}
+<link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
 <div class="container-fluid">
     <div class="row">
         <h1><i class="fa fa-bomb"></i> {{  p.__('Break It! (New Controller)') }}</h1>
@@ -41,6 +44,11 @@
                 <a class="btn btn-default btn-sm btn-block" href="{{ app.request.baseUrl }}/index.php?module=breakit&type=user&func=break" role="button">Old controller (unrouted)</a>
                 <a class="btn btn-default btn-sm btn-block" href="{{ path('zikulabreakitmodule_new_index') }}" role="button">New controller</a>
             </div>
+            <h3 class="breakit-test">Is Stylesheet Active?</h3>
+            <div class="alert alert-info">If the stylesheet is active, the text above should be Bold, italic and all caps.</div>
+            {% image '@ZikulaBreakItModule/Resources/public/images/cartoon-evil-bomb.jpg' %}
+            <img src="{{ asset_url }}" alt="Example" />
+            {% endimage %}
         </div>
     </div>
 </div>
