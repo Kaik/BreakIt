@@ -30,7 +30,7 @@ class BreakItModuleVersion extends \Zikula_AbstractVersion
             'displayname' => $this->__('BreakIt'),
             'description' => $this->__('BreakIt'),
             'url' => $this->__('breakit'),
-            'version' => '1.0.0',
+            'version' => '1.1.0',
             'core_min' => '1.4.0',
             'core_max' => '1.4.99',
             'securityschema' => array(

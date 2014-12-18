@@ -19,7 +19,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Zikula\Core\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route; // used in annotations - do not remove
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method; // used in annotations - do not remove
-use Zikula\BreakItModule\Util as BreakItUtil;
 use Zikula\BreakItModule\Entity\Task;
 
 /**
@@ -27,7 +26,7 @@ use Zikula\BreakItModule\Entity\Task;
  *
  * @Route("/form")
  *
- * Class NewController
+ * Class FormController
  * @package Zikula\BreakItModule\Controller
  */
 class FormController extends AbstractController
@@ -41,18 +40,25 @@ class FormController extends AbstractController
      */
     public function testAction(Request $request)
     {
-        // create a task and give it some dummy data for this example
+        // create a new task
         $task = new Task();
-        $task->setTask('Write a blog post');
-        $task->setDueDate(new \DateTime('tomorrow'));
+        $task->setDueDate(new \DateTime('tomorrow')); // sets default value for new entries
 
-        $form = $this->createFormBuilder($task)
-            ->add('task', 'text')
-            ->add('dueDate', 'date')
-            ->add('save', 'submit', array('label' => 'Create Task'))
-            ->getForm();
+        $form = $this->createForm('task', $task);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            /** @var \Doctrine\ORM\EntityManager $em */
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($task);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('zikulabreakitmodule_form_test'));
+        }
 
         $request->attributes->set('_legacy', true); // forces template to render inside old theme
+
         return $this->render('ZikulaBreakItModule:New:form.html.twig', array(
             'form' => $form->createView(),
         ));

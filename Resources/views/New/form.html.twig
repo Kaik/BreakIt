@@ -4,7 +4,11 @@
         <h1><i class="fa fa-bomb"></i> {{  p.__('Break It! (Form Demo Controller)') }}</h1>
         <div class="alert alert-info">This is a Demo of the Symfony Form component used within Zikula.</div>
         {{ form_start(form) }}
-        {{ form_widget(form) }}
+        {{ form_errors(form) }}
+
+        {{ form_row(form.task) }}
+        {{ form_row(form.dueDate) }}
+        {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
         {{ form_end(form) }}
     </div>
 </div>

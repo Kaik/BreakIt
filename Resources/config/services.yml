@@ -3,3 +3,7 @@ services:
         class: Zikula\BreakItModule\Twig\BreakItExtension
         tags:
             - { name: twig.extension }
+    breakit.form.type.task:
+        class: Zikula\BreakItModule\Form\Type\TaskType
+        tags:
+            - { name: form.type, alias: task }

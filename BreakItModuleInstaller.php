@@ -20,7 +20,6 @@ namespace Zikula\BreakItModule;
  */
 class BreakItModuleInstaller extends \Zikula_AbstractInstaller
 {
-
     /**
      * Initialise the module.
      *
@@ -28,6 +27,12 @@ class BreakItModuleInstaller extends \Zikula_AbstractInstaller
      */
     public function install()
     {
+        try {
+            \DoctrineHelper::createSchema($this->entityManager, array('\Zikula\BreakItModule\Entity\Task'));
+        } catch (\Exception $e) {
+            \LogUtil::registerError($this->__f('Error! Could not create tables (%s).', $e->getMessage()));
+            return false;
+        }
         return true;
     }
 
@@ -43,6 +48,13 @@ class BreakItModuleInstaller extends \Zikula_AbstractInstaller
     {
         switch ($oldversion) {
             case '1.0.0':
+            case '1.1.0':
+                try {
+                    \DoctrineHelper::createSchema($this->entityManager, array('\Zikula\BreakItModule\Entity\Task'));
+                } catch (\Exception $e) {
+                    \LogUtil::registerError($this->__f('Error! Could not create tables (%s).', $e->getMessage()));
+                    return false;
+                }
         }
 
         // Update successful
@@ -56,6 +68,7 @@ class BreakItModuleInstaller extends \Zikula_AbstractInstaller
      */
     public function uninstall()
     {
+        \DoctrineHelper::dropSchema($this->entityManager, array('\Zikula\BreakItModule\Entity\Task'));
         return true;
     }
 
