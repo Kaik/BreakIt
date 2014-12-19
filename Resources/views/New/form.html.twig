@@ -12,4 +12,17 @@
         {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
         {{ form_end(form) }}
     </div>
+    <div class="row">
+        <h2>Existing Tasks</h2>
+        <table class="table table-condensed table-striped">
+            <thead>
+                <tr><th>#</th><th>Task</th><th>Due Date</th></tr>
+            </thead>
+            <tbody>
+            {% for task in tasks %}
+                <tr><td>{{ task.id }}</td><td>{{ task.task }}</td><td>{{ task.duedate|date("m/d/Y") }}</td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>

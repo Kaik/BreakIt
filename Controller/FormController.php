@@ -48,9 +48,9 @@ class FormController extends AbstractController
 
         $form->handleRequest($request);
 
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
         if ($form->isValid()) {
-            /** @var \Doctrine\ORM\EntityManager $em */
-            $em = $this->getDoctrine()->getManager();
             $em->persist($task);
             $em->flush();
             $request->getSession()->getFlashBag()->add('status', "Task saved!");
@@ -62,6 +62,7 @@ class FormController extends AbstractController
 
         return $this->render('ZikulaBreakItModule:New:form.html.twig', array(
             'form' => $form->createView(),
+            'tasks' => $em->getRepository('ZikulaBreakItModule:Task')->findAll(),
         ));
     }
 }
