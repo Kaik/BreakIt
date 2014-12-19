@@ -53,6 +53,7 @@ class FormController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($task);
             $em->flush();
+            $request->getSession()->getFlashBag()->add('status', "Task saved!");
 
             return $this->redirect($this->generateUrl('zikulabreakitmodule_form_test'));
         }

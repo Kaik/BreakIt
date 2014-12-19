@@ -1,6 +1,7 @@
 services:
     breakit.twig.breakit_extension:
         class: Zikula\BreakItModule\Twig\BreakItExtension
+        arguments: ["@session"]
         tags:
             - { name: twig.extension }
     breakit.form.type.task:
