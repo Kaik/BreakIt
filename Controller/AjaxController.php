@@ -14,23 +14,8 @@
 
 namespace Zikula\BreakItModule\Controller;
 
-use ModUtil;
-use UserUtil;
-use DataUtil;
-use SecurityUtil;
-use System;
-use Zikula\Core\RouteUrl;
-use ZLanguage;
-use Zikula\Core\Exception\FatalErrorException;
-use Zikula\Core\Response\Ajax\UnavailableResponse;
-use Zikula\Core\Response\Ajax\BadDataResponse;
-use Zikula\Core\Response\PlainResponse;
-use Zikula\Core\UrlInterface;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-
 use Zikula\Core\Response\Ajax\AjaxResponse;
 use Zikula\BreakItModule\Util as BreakItUtil;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route; // used in annotations - do not remove
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method; // used in annotations - do not remove

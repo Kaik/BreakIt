@@ -14,12 +14,9 @@
 
 namespace Zikula\BreakItModule\Controller;
 
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route; // used in annotations - do not remove
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method; // used in annotations - do not remove
 use Symfony\Component\HttpFoundation\Request;
-use Zikula\Core\Exception\FatalErrorException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Zikula\BreakItModule\Util as BreakItUtil;
 
 /**
@@ -50,7 +47,6 @@ class UserController extends \Zikula_AbstractController
      * intentionally non-routed method
      *
      * @return \Symfony\Component\HttpFoundation\Response
-     * @throws FatalErrorException
      * @throws \Exception
      */
     public function breakAction()
