@@ -1,5 +1,5 @@
 {
-    "name": "zikula/breakit",
+    "name": "zikula/breakit-module",
     "description": "A module to intentionally break stuff.",
     "type": "zikula-module",
     "license": "MIT",
