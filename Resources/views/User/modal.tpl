@@ -16,4 +16,4 @@
     </div>
 </div>
 {pageaddvar name='javascript' value='jQuery'}
-{pageaddvar name='javascript' value=$moduleBundle->getRelativePath()|cat:'/Resources/public/js/Zikula.BreakIt.User.View.js'}
+{pageaddvar name='javascript' value='@ZikulaBreakItModule/Resources/public/js/Zikula.BreakIt.User.View.js'}
