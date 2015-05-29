@@ -1,0 +1,54 @@
+{% stylesheets '@ZikulaBreakItModule/Resources/public/css/*' filter='cssrewrite' %}
+<link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
+<div class="container-fluid">
+    <div class="row">
+        <h1><i class="fa fa-bomb"></i> {{ __('Break It! (Translations Controller)') }}</h1>
+        {# display flash messages (only errors) #}
+        {% for message in attribute(app.session.flashBag, 'get', ['error']) %}
+            <div class="alert alert-danger">{{ message }}</div>
+        {% endfor %}
+        <div class="col-xs-12 col-md-6">
+            <div class="well well-lg">            
+            
+            <h2> {{ __('Translations legacy','zikulabreakitmodule') }}</h2>
+                <p>  {{ __('There is an empty basket in a room', 'zikulabreakitmodule') }}</p>
+                <p>  {{ __f('@name entered the room with a bag of apples',{'@name':'Fabien'}, 'zikulabreakitmodule') }}</p>
+                <p>  {{ _fn('@name added @count apple to the basket','@name added @count apples to the basket', 0,{'@name':'Fabien','@count':'0'}, 'zikulabreakitmodule') }}</p>      
+                <p>  {{ _fn('@name added @count apple to the basket','@name added @count apples to the basket', 1,{'@name':'Fabien','@count':'1'}, 'zikulabreakitmodule') }}</p>    
+                <p>  {{ _fn('@name added @count apple to the basket','@name added @count apples to the basket', 2,{'@name':'Fabien','@count':'2'}, 'zikulabreakitmodule') }}</p>    
+                <p>  {{ _fn('@name added @count apple to the basket','@name added @count apples to the basket', 5,{'@name':'Fabien','@count':'5'}, 'zikulabreakitmodule') }}</p>                                                                
+            <h2> {% trans from "zikulabreakitmodule" %}Translations symfony{% endtrans %}</h2>
+                <p>  {% trans from "zikulabreakitmodule" %}There is an empty basket in a room{% endtrans %}</p>
+                <p>  {% trans with {'@name': 'Fabien'} from "zikulabreakitmodule" %}@name entered the room with a bag of apples{% endtrans %}</p>
+                <p>  {% transchoice 0 with {'@name': 'Fabien','@count': '0'} from "zikulabreakitmodule" %}@name added @count apples to the basket{% endtranschoice %}</p>               
+                <p>  {% transchoice 1 with {'@name': 'Fabien','@count': '1'} from "zikulabreakitmodule" %}@name added @count apples to the basket{% endtranschoice %}</p>
+                <p>  {% transchoice 2 with {'@name': 'Fabien','@count': '2'} from "zikulabreakitmodule" %}@name added @count apples to the basket{% endtranschoice %}</p>
+                <p>  {% transchoice 5 with {'@name': 'Fabien','@count': '5'} from "zikulabreakitmodule" %}@name added @count apples to the basket{% endtranschoice %}</p>            
+            <p>  {% trans from "zikula" %}Error! Cannot determine valid 'cid' for edit mode in 'ZikulaCategoriesModule_admin_edit'.{% endtrans %}</p>
+         </div>
+        </div>
+        <div class="col-xs-12 col-md-3">
+            <h2> {{ __('Zikula translations settings') }}</h2>        
+                <div class="alert alert-info text-left">
+                    <ul>
+                        <li>Environment: {{ app.environment }}</li>
+                        <li>Debug: {{ app.debug|yesno }}</li>
+                        <li>Zikula shorturls: {{ ZConfig.shorturls|yesno }}</li>
+                        <li>Zikula stripentrypoint: {{ ZConfig.shorturlsstripentrypoint|yesno }}</li>
+                        <li>Zikula User logged In: {{ ZUserLoggedIn|yesno }}</li>
+                    </ul>
+                </div>
+            <h3> {{ __('Twig enviroment dump') }}</h3>                   
+        
+                    {{ dump() }}    
+            {% image '@ZikulaBreakItModule/Resources/public/images/cartoon-evil-bomb.jpg' %}
+            <img src="{{ asset_url }}" alt="Example" />
+            {% endimage %}
+        </div>
+    </div>
+</div>
+{# jquery autoincluded see \JCSSUtil::prepareJavascripts #}
+{% javascripts '@ZikulaBreakItModule/Resources/public/js/*' %}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
