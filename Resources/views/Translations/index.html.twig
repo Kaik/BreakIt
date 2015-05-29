@@ -10,7 +10,20 @@
         {% endfor %}
         <div class="col-xs-12 col-md-6">
             <div class="well well-lg">            
-            
+        {% if legacy.translator.multiLingualCapable %}   
+        {% if legacy.installed_languages|length > 1  %}  
+                <div class="alert alert-success text-left">
+                    <p><strong>{{ __('Zikula Multilingual Capabilities are turned on') }}</strong></p>
+                    <p>{{ __('Installed languages found') }}</p>
+                    <ul>
+                        {% for language_installed in legacy.installed_languages %}
+                        <li>{{ language_installed }}</li>
+                        {% endfor %} 
+                    </ul>                      
+                </div>        
+                                 
+<div class="panel panel-default">
+  <div class="panel-body">                                
             <h2> {{ __('Translations legacy','zikulabreakitmodule') }}</h2>
                 <p>  {{ __('There is an empty basket in a room', 'zikulabreakitmodule') }}</p>
                 <p>  {{ __f('@name entered the room with a bag of apples',{'@name':'Fabien'}, 'zikulabreakitmodule') }}</p>
@@ -18,6 +31,10 @@
                 <p>  {{ _fn('@name added @count apple to the basket','@name added @count apples to the basket', 1,{'@name':'Fabien','@count':'1'}, 'zikulabreakitmodule') }}</p>    
                 <p>  {{ _fn('@name added @count apple to the basket','@name added @count apples to the basket', 2,{'@name':'Fabien','@count':'2'}, 'zikulabreakitmodule') }}</p>    
                 <p>  {{ _fn('@name added @count apple to the basket','@name added @count apples to the basket', 5,{'@name':'Fabien','@count':'5'}, 'zikulabreakitmodule') }}</p>                                                                
+  </div>
+</div>   
+<div class="panel panel-default">
+  <div class="panel-body">  
             <h2> {% trans from "zikulabreakitmodule" %}Translations symfony{% endtrans %}</h2>
                 <p>  {% trans from "zikulabreakitmodule" %}There is an empty basket in a room{% endtrans %}</p>
                 <p>  {% trans with {'@name': 'Fabien'} from "zikulabreakitmodule" %}@name entered the room with a bag of apples{% endtrans %}</p>
@@ -25,23 +42,58 @@
                 <p>  {% transchoice 1 with {'@name': 'Fabien','@count': '1'} from "zikulabreakitmodule" %}@name added @count apples to the basket{% endtranschoice %}</p>
                 <p>  {% transchoice 2 with {'@name': 'Fabien','@count': '2'} from "zikulabreakitmodule" %}@name added @count apples to the basket{% endtranschoice %}</p>
                 <p>  {% transchoice 5 with {'@name': 'Fabien','@count': '5'} from "zikulabreakitmodule" %}@name added @count apples to the basket{% endtranschoice %}</p>            
-            <p>  {% trans from "zikula" %}Error! Cannot determine valid 'cid' for edit mode in 'ZikulaCategoriesModule_admin_edit'.{% endtrans %}</p>
+  </div>
+</div>        
+      {% else %}
+                <div class="alert alert-danger text-left">
+                    <p><strong>{{ __('You have installed only one language') }} {{ legacy.locale }}</strong></p>
+                    <p class=""> {{ __('Please copy core translations for languages you want from https://github.com/zikula-communities to app/Resources/locale') }}</p>                  
+                    <p class=""><strong>{{ __('Please reload routes multilingual settings and clear cache every time you place new translations or delete them') }}</strong></p>                      
+                    
+                    </div>                 
+         {% endif %}
+            
+        {% else %}
+                <div class="alert alert-danger text-left">
+                    <p><strong>{{ __('Zikula Multilingual Capabilities are turned off') }}</strong></p>
+                    <p class=""> {{ __('Please copy core translations for languages you want from https://github.com/zikula-communities to app/Resources/locale') }}</p>
+                    <p class=""> {{ __('Please turn on Multilingual Capabilities in administration General settings - Localisation settings') }}</p>
+                    <p class=""><strong>{{ __('Please reload routes multilingual settings and clear cache every time you place new translations or delete them') }}</strong></p>                      
+                </div>                 
+         {% endif %}
          </div>
+            <h3> {{ __('Twig enviroment dump') }}</h3>                           
+                    {{ dump() }}            
         </div>
         <div class="col-xs-12 col-md-3">
+            <h2> {{ __('Zikula enviroment settings') }}</h2>        
+                <div class="alert alert-info text-left">
+                    <ul>
+                        <li>{{ __('Environment') }}: {{ app.environment }}</li>
+                        <li>{{ __('Debug') }}: {{ app.debug|yesno }}</li>
+                        <li>{{ __('Zikula shorturls') }}: {{ ZConfig.shorturls|yesno }}</li>
+                        <li>{{ __('Zikula stripentrypoint') }}: {{ ZConfig.shorturlsstripentrypoint|yesno }}</li>
+                        <li>{{ __('Zikula User logged In') }}: {{ ZUserLoggedIn|yesno }}</li>
+                    </ul>
+                </div>        
             <h2> {{ __('Zikula translations settings') }}</h2>        
                 <div class="alert alert-info text-left">
                     <ul>
-                        <li>Environment: {{ app.environment }}</li>
-                        <li>Debug: {{ app.debug|yesno }}</li>
-                        <li>Zikula shorturls: {{ ZConfig.shorturls|yesno }}</li>
-                        <li>Zikula stripentrypoint: {{ ZConfig.shorturlsstripentrypoint|yesno }}</li>
-                        <li>Zikula User logged In: {{ ZUserLoggedIn|yesno }}</li>
+                        <li>{{ __('Multilingual Capabilities') }}: {{ legacy.translator.multiLingualCapable|yesno }}</li>
+                            <li>{{ __('langRequested') }}: {{ legacy.translator.langRequested }}</li>
+                            <li>{{ __('langSession') }}: {{ legacy.translator.langSession|yesno }}</li>
+                            <li>{{ __('langDetect') }}: {{ legacy.translator.langDetect|yesno }}</li>
+                            <li>{{ __('langSystemDefault') }}: {{ legacy.translator.langSystemDefault }}</li>
+                            <li>{{ __('langFixSession') }}: {{ legacy.translator.langFixSession|yesno }}</li>
+                            <li>{{ __('dbCharset') }}: {{ legacy.translator.dbCharset }}</li>
+                            <li>{{ __('encoding') }}: {{ legacy.translator.encoding }}</li>
+                            <li>{{ __('languageCode') }}: {{ legacy.translator.languageCode }}</li>
+                            <li>{{ __('browserLanguagePref') }}: {{ legacy.translator.browserLanguagePref|yesno }}</li>
+                            <li>{{ __('langUrlRule') }}: {{ legacy.translator.langUrlRule|yesno }}</li>
+                            <li>{{ __('locale') }}: {{ legacy.translator.locale }}</li>
+                            <li>{{ __('languageCodeLegacy') }}: {{ legacy.translator.languageCodeLegacy }}</li>                        
                     </ul>
-                </div>
-            <h3> {{ __('Twig enviroment dump') }}</h3>                   
-        
-                    {{ dump() }}    
+                </div> 
             {% image '@ZikulaBreakItModule/Resources/public/images/cartoon-evil-bomb.jpg' %}
             <img src="{{ asset_url }}" alt="Example" />
             {% endimage %}
