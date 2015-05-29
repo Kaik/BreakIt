@@ -21,37 +21,54 @@
                         {% endfor %} 
                     </ul>                      
                 </div>        
-                                 
-<div class="panel panel-default">
-  <div class="panel-body">                                
-            <h2> {{ __('Translations legacy','zikulabreakitmodule') }}</h2>
-                <p>  {{ __('There is an empty basket in a room', 'zikulabreakitmodule') }}</p>
-                <p>  {{ __f('@name entered the room with a bag of apples',{'@name':'Fabien'}, 'zikulabreakitmodule') }}</p>
-                <p>  {{ _fn('@name added @count apple to the basket','@name added @count apples to the basket', 0,{'@name':'Fabien','@count':'0'}, 'zikulabreakitmodule') }}  // 0 </p>      
-                <p>  {{ _fn('@name added @count apple to the basket','@name added @count apples to the basket', 1,{'@name':'Fabien','@count':'1'}, 'zikulabreakitmodule') }}  // 1 </p>    
-                <p>  {{ _fn('@name added @count apple to the basket','@name added @count apples to the basket', 2,{'@name':'Fabien','@count':'2'}, 'zikulabreakitmodule') }}  // 2</p>    
-                <p>  {{ _fn('@name added @count apple to the basket','@name added @count apples to the basket', 5,{'@name':'Fabien','@count':'5'}, 'zikulabreakitmodule') }}  // 5</p>                                                                
-  </div>
-</div>   
-<div class="panel panel-default">
-  <div class="panel-body">  
-            <h2> {% trans from "zikulabreakitmodule" %}Translations symfony{% endtrans %}</h2>
-                <p>  {% trans from "zikulabreakitmodule" %}There is an empty basket in a room{% endtrans %}</p>
-                <p>  {% trans with {'@name': 'Fabien'} from "zikulabreakitmodule" %}@name entered the room with a bag of apples{% endtrans %}</p>
-                <p>  {% transchoice 0 with {'@name': 'Fabien','@count': '0'} from "zikulabreakitmodule" %}@name added @count apples to the basket{% endtranschoice %} // 0</p>               
-                <p>  {% transchoice 1 with {'@name': 'Fabien','@count': '1'} from "zikulabreakitmodule" %}@name added @count apples to the basket{% endtranschoice %} // 1</p>
-                <p>  {% transchoice 2 with {'@name': 'Fabien','@count': '2'} from "zikulabreakitmodule" %}@name added @count apples to the basket{% endtranschoice %} // 2</p>
-                <p>  {% transchoice 5 with {'@name': 'Fabien','@count': '5'} from "zikulabreakitmodule" %}@name added @count apples to the basket{% endtranschoice %} // 5</p>            
-  </div>
-</div>        
-      {% else %}
+                 {% if drak.translator %}                  
+                <div class="panel panel-default">
+                  <div class="panel-body">                                
+                            <h2> {{ __('Translations legacy','zikulabreakitmodule') }}</h2>
+                                <p>  {{ __('There is an empty basket in a room', 'zikulabreakitmodule') }}</p>
+                                <p>  {{ __f('@name entered the room with a bag of apples',{'@name':'Fabien'}, 'zikulabreakitmodule') }}</p>
+                                <p>  {{ _fn('@name added @count apple to the basket','@name added @count apples to the basket', 0,{'@name':'Fabien','@count':'0'}, 'zikulabreakitmodule') }}  // 0 </p>      
+                                <p>  {{ _fn('@name added @count apple to the basket','@name added @count apples to the basket', 1,{'@name':'Fabien','@count':'1'}, 'zikulabreakitmodule') }}  // 1 </p>    
+                                <p>  {{ _fn('@name added @count apple to the basket','@name added @count apples to the basket', 2,{'@name':'Fabien','@count':'2'}, 'zikulabreakitmodule') }}  // 2</p>    
+                                <p>  {{ _fn('@name added @count apple to the basket','@name added @count apples to the basket', 5,{'@name':'Fabien','@count':'5'}, 'zikulabreakitmodule') }}  // 5</p>                                                                
+                  </div>
+                </div>   
+                {% endif %} 
+                <div class="panel panel-default">
+                  <div class="panel-body">  
+                            <h2> {% trans from "zikulabreakitmodule" %}Translations symfony{% endtrans %}</h2>
+                                <p>  {% trans from "zikulabreakitmodule" %}There is an empty basket in a room{% endtrans %}</p>
+                                <p>  {% trans with {'@name': 'Fabien'} from "zikulabreakitmodule" %}@name entered the room with a bag of apples{% endtrans %}</p>
+                                <p>  {% transchoice 0 with {'@name': 'Fabien','@count': '0'} from "zikulabreakitmodule" %}@name added @count apples to the basket{% endtranschoice %} // 0</p>               
+                                <p>  {% transchoice 1 with {'@name': 'Fabien','@count': '1'} from "zikulabreakitmodule" %}@name added @count apples to the basket{% endtranschoice %} // 1</p>
+                                <p>  {% transchoice 2 with {'@name': 'Fabien','@count': '2'} from "zikulabreakitmodule" %}@name added @count apples to the basket{% endtranschoice %} // 2</p>
+                                <p>  {% transchoice 5 with {'@name': 'Fabien','@count': '5'} from "zikulabreakitmodule" %}@name added @count apples to the basket{% endtranschoice %} // 5</p>            
+                  </div>
+                </div>  
+                
+        {% if zikulasymfony.translator %}                  
+                <div class="panel panel-default">
+                  <div class="panel-body">  
+                           <h2> {{ __('Translations legacy','zikulabreakitmodule') }}</h2>
+                                <p>  {{ __('There is an empty basket in a room') }}</p>
+                                <p>  {{ __f('@name entered the room with a bag of apples',{'@name':'Fabien'}) }}</p>
+                                <p>  {{ _fn('@name added @count apple to the basket','@name added @count apples to the basket', 0,{'@name':'Fabien','@count':'0'}) }}  // 0 </p>      
+                                <p>  {{ _fn('@name added @count apple to the basket','@name added @count apples to the basket', 1,{'@name':'Fabien','@count':'1'}) }}  // 1 </p>    
+                                <p>  {{ _fn('@name added @count apple to the basket','@name added @count apples to the basket', 2,{'@name':'Fabien','@count':'2'}) }}  // 2</p>    
+                                <p>  {{ _fn('@name added @count apple to the basket','@name added @count apples to the basket', 5,{'@name':'Fabien','@count':'5'}) }}  // 5</p>                                                                
+                  
+                  </div>
+                </div>                  
+        {% endif %}     
+                         
+        {% else %}
                 <div class="alert alert-danger text-left">
                     <p><strong>{{ __('You have installed only one language') }} {{ legacy.locale }}</strong></p>
                     <p class=""> {{ __('Please copy core translations for languages you want from https://github.com/zikula-communities to app/Resources/locale') }}</p>                  
                     <p class=""><strong>{{ __('Please reload routes multilingual settings and clear cache every time you place new translations or delete them') }}</strong></p>                      
                     
                     </div>                 
-         {% endif %}
+        {% endif %}
             
         {% else %}
                 <div class="alert alert-danger text-left">

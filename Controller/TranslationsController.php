@@ -52,9 +52,24 @@ class TranslationsController extends AbstractController
         $legacy['installed_languages'] = \ZLanguage::getInstalledLanguages();
         //$legacy['domain'] = '';
         
-        // $this->trans its draks translator
-        $drak['translator'] =  $this->trans;
+        if (isset($this->trans)) 
+        {
+            // $this->trans its draks translator
+            $drak['translator'] =  $this->trans;
+        }else{            
+            // $this->trans its draks translator
+            $drak['translator'] =  false;            
+        }       
         
+        if (isset($this->translator))
+        {
+            // $this->trans its draks translator
+            $zikulasymfony['translator'] =  $this->translator;            
+        }else{
+            // $this->trans its draks translator
+            $zikulasymfony['translator'] =  false;        
+        }
+                
         //symfony
         $symfony['translator'] = $this->container->get('translator');
         $symfony['locale'] = $symfony['translator']->getLocale();
@@ -65,7 +80,8 @@ class TranslationsController extends AbstractController
              array('ZUserLoggedIn' => \UserUtil::isLoggedIn(),
                    'legacy' => $legacy,
                    'drak' => $drak,
-                   'symfony' => $symfony
+                   'symfony' => $symfony,
+                   'zikulasymfony' => $zikulasymfony
              ));
     }
 
